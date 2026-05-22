@@ -1,6 +1,11 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { GraduationCap, Clock, Users, Award, PlayCircle, CheckCircle, BookOpen, X } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+
+interface TrainingPageProps {
+  onNavigate: (page: string) => void;
+}
 
 const courses = [
   {
@@ -12,6 +17,7 @@ const courses = [
     level: 'Básico',
     progress: 100,
     color: 'bg-blue-500',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 2,
@@ -22,6 +28,7 @@ const courses = [
     level: 'Intermediário',
     progress: 65,
     color: 'bg-green-500',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 3,
@@ -32,6 +39,7 @@ const courses = [
     level: 'Avançado',
     progress: 30,
     color: 'bg-purple-500',
+    image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80',
   },
   {
     id: 4,
@@ -42,6 +50,7 @@ const courses = [
     level: 'Básico',
     progress: 0,
     color: 'bg-orange-500',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=900&q=80',
   },
 ];
 
@@ -51,7 +60,7 @@ const certifications = [
   { name: 'Gestor de Riscos', holders: 312, icon: BookOpen },
 ];
 
-export default function TrainingPage() {
+export default function TrainingPage({ onNavigate }: TrainingPageProps) {
   const [selectedCourse, setSelectedCourse] = useState<number | null>(null);
   const [showCertModal, setShowCertModal] = useState(false);
 
@@ -91,17 +100,17 @@ export default function TrainingPage() {
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
                   <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
                     <Clock className="w-6 h-6 mx-auto mb-2 text-blue-600 dark:text-blue-400" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Duração</p>
+                    <p className="text-sm text-purple-950 dark:text-yellow-100 font-semibold">Duração</p>
                     <p className="font-bold text-gray-900 dark:text-white">{currentCourse.duration}</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
                     <Users className="w-6 h-6 mx-auto mb-2 text-green-600 dark:text-green-400" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Alunos</p>
+                    <p className="text-sm text-purple-950 dark:text-yellow-100 font-semibold">Alunos</p>
                     <p className="font-bold text-gray-900 dark:text-white">{currentCourse.students}</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
                     <Award className="w-6 h-6 mx-auto mb-2 text-purple-600 dark:text-purple-400" />
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Nível</p>
+                    <p className="text-sm text-purple-950 dark:text-yellow-100 font-semibold">Nível</p>
                     <p className="font-bold text-gray-900 dark:text-white">{currentCourse.level}</p>
                   </div>
                 </div>
@@ -110,7 +119,7 @@ export default function TrainingPage() {
                   <h3 className="font-bold text-gray-900 dark:text-white mb-3">Conteúdo do Curso</h3>
                   <ul className="space-y-2">
                     {['Introdução e conceitos fundamentais', 'Aplicação prática', 'Estudos de caso', 'Exercícios e avaliações', 'Certificação final'].map((item, i) => (
-                      <li key={i} className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                      <li key={i} className="flex items-center gap-2 text-purple-950 dark:text-yellow-100 font-medium">
                         <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                         {item}
                       </li>
@@ -118,8 +127,14 @@ export default function TrainingPage() {
                   </ul>
                 </div>
 
-                <button className={`w-full ${currentCourse.color} text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-all`}>
-                  {currentCourse.progress === 100 ? 'Obter Certificado' : currentCourse.progress > 0 ? 'Continuar Curso' : 'Iniciar Curso'}
+                <button
+                  onClick={() => {
+                    setSelectedCourse(null);
+                    onNavigate('contact');
+                  }}
+                  className={`w-full ${currentCourse.color} text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-all`}
+                >
+                  {currentCourse.progress === 100 ? 'Solicitar Certificado' : currentCourse.progress > 0 ? 'Solicitar Continuidade' : 'Solicitar Inscrição'}
                 </button>
               </div>
             </motion.div>
@@ -146,14 +161,14 @@ export default function TrainingPage() {
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                   Certificações Profissionais
                 </h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                <p className="text-purple-950 dark:text-yellow-100 mb-6 font-semibold">
                   Complete os cursos para obter certificações reconhecidas nacionalmente
                 </p>
                 <div className="space-y-3">
                   {certifications.map((cert, i) => (
                     <div key={i} className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-4 text-left">
                       <h3 className="font-bold text-gray-900 dark:text-white">{cert.name}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{cert.holders} profissionais certificados</p>
+                      <p className="text-sm text-purple-950 dark:text-yellow-100 font-semibold">{cert.holders} profissionais certificados</p>
                     </div>
                   ))}
                 </div>
@@ -180,10 +195,16 @@ export default function TrainingPage() {
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Treinamentos e Capacitações
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400">
+          <p className="text-xl text-gray-800 dark:text-purple-100 font-medium">
             Desenvolva suas competências em Segurança e Saúde no Trabalho
           </p>
         </motion.div>
+
+        <ImageWithFallback
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80"
+          alt="Equipe em treinamento corporativo com notebooks"
+          className="h-72 w-full object-cover rounded-xl shadow-xl mb-12"
+        />
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {certifications.map((cert, index) => {
@@ -199,7 +220,7 @@ export default function TrainingPage() {
               >
                 <Icon className="w-12 h-12 mb-4" />
                 <h3 className="text-xl font-bold mb-2">{cert.name}</h3>
-                <p className="text-blue-100">{cert.holders} profissionais certificados</p>
+                <p className="text-yellow-100 font-semibold">{cert.holders} profissionais certificados</p>
               </motion.div>
             );
           })}
@@ -213,17 +234,25 @@ export default function TrainingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
               whileHover={{ scale: 1.02 }}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer group"
               onClick={() => setSelectedCourse(course.id)}
             >
-              <div className={`${course.color} h-2`}></div>
+              <div className="relative h-44 overflow-hidden">
+                <ImageWithFallback
+                  src={course.image}
+                  alt={`Imagem do curso ${course.title}`}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/30"></div>
+                <div className={`${course.color} absolute bottom-0 left-0 right-0 h-2`}></div>
+              </div>
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {course.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                    <p className="text-gray-800 dark:text-purple-100 text-sm mb-4 font-medium">
                       {course.description}
                     </p>
                   </div>
@@ -232,7 +261,7 @@ export default function TrainingPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6 mb-4 text-sm text-gray-600 dark:text-gray-400">
+                <div className="flex items-center gap-6 mb-4 text-sm text-gray-800 dark:text-purple-100 font-medium">
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4" />
                     <span>{course.duration}</span>
@@ -241,14 +270,14 @@ export default function TrainingPage() {
                     <Users className="w-4 h-4" />
                     <span>{course.students} alunos</span>
                   </div>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full text-xs font-semibold">
+                  <span className="px-3 py-1 bg-yellow-100 dark:bg-yellow-400 text-purple-950 rounded-full text-xs font-bold">
                     {course.level}
                   </span>
                 </div>
 
                 <div className="mb-4">
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-600 dark:text-gray-400">Progresso</span>
+                    <span className="text-gray-800 dark:text-purple-100 font-medium">Progresso</span>
                     <span className="text-gray-900 dark:text-white font-semibold">{course.progress}%</span>
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
@@ -261,7 +290,13 @@ export default function TrainingPage() {
                   </div>
                 </div>
 
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2">
+                <button
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onNavigate('contact');
+                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                >
                   {course.progress === 100 ? (
                     <>
                       <CheckCircle className="w-5 h-5" />
@@ -295,15 +330,15 @@ export default function TrainingPage() {
           <h2 className="text-3xl font-bold text-white mb-4">
             Certificação Profissional
           </h2>
-          <p className="text-purple-100 mb-6 max-w-2xl mx-auto">
+          <p className="text-yellow-100 mb-6 max-w-2xl mx-auto font-semibold">
             Complete os treinamentos e obtenha certificações reconhecidas nacionalmente
             em Segurança e Saúde no Trabalho
           </p>
           <button
-            onClick={() => setShowCertModal(true)}
+            onClick={() => onNavigate('contact')}
             className="px-8 py-3 bg-white text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all shadow-lg"
           >
-            Ver Certificações Disponíveis
+            Solicitar Certificação
           </button>
         </motion.div>
       </div>

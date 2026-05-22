@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { Search, Calendar, User, Tag, ArrowRight, X } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 
 const categories = ['Todos', 'Legislação', 'Segurança', 'Saúde', 'Gestão', 'Treinamento'];
 
@@ -12,7 +13,7 @@ const blogPosts = [
     author: 'Dr. Carlos Silva',
     date: '15 Mai 2026',
     category: 'Legislação',
-    image: 'bg-gradient-to-br from-blue-500 to-blue-700',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80',
     readTime: '5 min',
     fullContent: 'A NR-1 passou por importantes atualizações em 2024, trazendo novos requisitos para o Gerenciamento de Riscos Ocupacionais. As empresas agora precisam implementar sistemas mais robustos de identificação e controle de riscos, com documentação detalhada e treinamentos específicos. Esta mudança visa aumentar a segurança dos trabalhadores e reduzir acidentes de trabalho. É fundamental que todas as organizações se adequem aos novos padrões dentro dos prazos estabelecidos pelo Ministério do Trabalho.',
   },
@@ -23,7 +24,7 @@ const blogPosts = [
     author: 'Eng. Ana Santos',
     date: '12 Mai 2026',
     category: 'Gestão',
-    image: 'bg-gradient-to-br from-green-500 to-green-700',
+    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80',
     readTime: '7 min',
     fullContent: 'A gestão eficaz de riscos ocupacionais requer metodologia estruturada e participação ativa de todos os níveis da organização. Comece com um inventário completo de riscos, utilizando ferramentas como APR (Análise Preliminar de Riscos) e FMEA. Implemente controles hierárquicos, priorizando eliminação, substituição, controles de engenharia, administrativos e, por último, EPIs. O monitoramento contínuo é essencial para garantir a eficácia das medidas adotadas.',
   },
@@ -34,7 +35,7 @@ const blogPosts = [
     author: 'Maria Oliveira',
     date: '10 Mai 2026',
     category: 'Segurança',
-    image: 'bg-gradient-to-br from-purple-500 to-purple-700',
+    image: 'https://images.unsplash.com/photo-1581093458791-9d15482442f6?auto=format&fit=crop&w=900&q=80',
     readTime: '6 min',
     fullContent: 'A seleção adequada de EPIs deve considerar os riscos específicos de cada atividade, características do trabalhador e condições ambientais. É fundamental verificar certificações (CA), prazo de validade e condições de armazenamento. O treinamento para uso correto é obrigatório e deve incluir demonstração prática, conservação e limitações do equipamento. Mantenha registros de entrega e realize inspeções periódicas.',
   },
@@ -45,7 +46,7 @@ const blogPosts = [
     author: 'Dra. Paula Costa',
     date: '8 Mai 2026',
     category: 'Saúde',
-    image: 'bg-gradient-to-br from-orange-500 to-orange-700',
+    image: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&w=900&q=80',
     readTime: '8 min',
     fullContent: 'A saúde mental dos trabalhadores é tão importante quanto a física. Programas de bem-estar devem incluir apoio psicológico, gestão de estresse, promoção de equilíbrio vida-trabalho e cultura organizacional saudável. Identifique fatores de risco psicossociais como sobrecarga, assédio e pressão excessiva. Crie canais de comunicação seguros e ofereça suporte profissional quando necessário. A prevenção é mais eficaz que a remediação.',
   },
@@ -56,7 +57,7 @@ const blogPosts = [
     author: 'Prof. João Ferreira',
     date: '5 Mai 2026',
     category: 'Treinamento',
-    image: 'bg-gradient-to-br from-red-500 to-red-700',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80',
     readTime: '6 min',
     fullContent: 'Treinamentos eficazes vão além da simples transmissão de informações. Use metodologias ativas como simulações, estudos de caso e práticas hands-on. Adapte o conteúdo ao público, utilize linguagem acessível e recursos visuais. Avalie a aprendizagem através de exercícios práticos, não apenas testes teóricos. Realize reciclagens periódicas e mantenha registros detalhados de todos os treinamentos realizados.',
   },
@@ -67,7 +68,7 @@ const blogPosts = [
     author: 'Esp. Ricardo Alves',
     date: '2 Mai 2026',
     category: 'Gestão',
-    image: 'bg-gradient-to-br from-indigo-500 to-indigo-700',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
     readTime: '9 min',
     fullContent: 'Uma auditoria de conformidade eficaz segue metodologia estruturada: planejamento, execução, análise e relatório. Verifique documentação obrigatória (PGR, PCMSO, laudos), condições de trabalho, treinamentos e registros. Entreviste trabalhadores e gestores para validar processos. Identifique não conformidades e classifique por gravidade. Apresente relatório detalhado com recomendações priorizadas e prazos realistas para adequação.',
   },
@@ -122,7 +123,13 @@ export default function BlogPage() {
               onClick={(e) => e.stopPropagation()}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
             >
-              <div className={`${currentPost.image} h-48 relative`}>
+              <div className="h-48 relative overflow-hidden">
+                <ImageWithFallback
+                  src={currentPost.image}
+                  alt={`Imagem do artigo ${currentPost.title}`}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/30"></div>
                 <button
                   onClick={() => setSelectedPost(null)}
                   className="absolute top-4 right-4 w-10 h-10 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors"
@@ -257,7 +264,12 @@ export default function BlogPage() {
               onClick={() => setSelectedPost(post.id)}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer group"
             >
-              <div className={`${post.image} h-48 flex items-center justify-center relative overflow-hidden`}>
+              <div className="h-48 flex items-center justify-center relative overflow-hidden">
+                <ImageWithFallback
+                  src={post.image}
+                  alt={`Imagem do artigo ${post.title}`}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
                 <span className="relative z-10 text-white text-sm font-semibold px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
                   {post.category}
@@ -288,7 +300,13 @@ export default function BlogPage() {
                     <span>{post.author}</span>
                   </div>
 
-                  <button className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-semibold hover:gap-2 transition-all">
+                  <button
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setSelectedPost(post.id);
+                    }}
+                    className="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-semibold hover:gap-2 transition-all"
+                  >
                     Ler mais
                     <ArrowRight className="w-4 h-4" />
                   </button>

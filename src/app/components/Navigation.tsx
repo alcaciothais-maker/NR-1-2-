@@ -25,8 +25,8 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
-            <Shield className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-            <span className="text-xl font-bold text-gray-900 dark:text-white">NR-1 Portal</span>
+            <Shield className="w-8 h-8 text-yellow-500" />
+            <span className="text-xl font-bold text-purple-950 dark:text-white">NR-1 Portal</span>
           </div>
 
           <div className="hidden md:flex items-center gap-1">
@@ -38,8 +38,8 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
                   onClick={() => onPageChange(item.id)}
                   className={`px-3 py-2 rounded-lg flex items-center gap-2 transition-all duration-200 ${
                     currentPage === item.id
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                      ? 'bg-purple-700 text-white shadow-lg'
+                      : 'text-purple-900 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-950/40'
                   }`}
                   aria-label={item.label}
                   aria-current={currentPage === item.id ? 'page' : undefined}
@@ -78,8 +78,8 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
                 onClick={() => onPageChange(item.id)}
                 className={`flex-shrink-0 px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
                   currentPage === item.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+                    ? 'bg-purple-700 text-white'
+                    : 'bg-purple-50 dark:bg-gray-800 text-purple-900 dark:text-gray-300'
                 }`}
               >
                 <Icon className="w-4 h-4" />

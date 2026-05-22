@@ -9,6 +9,7 @@ import ChecklistPage from './components/ChecklistPage';
 import BlogPage from './components/BlogPage';
 import ContactPage from './components/ContactPage';
 import FloatingChat from './components/FloatingChat';
+import NR1SectionPage from './components/NR1SectionPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -18,17 +19,24 @@ export default function App() {
       case 'home':
         return <HomePage onNavigate={setCurrentPage} />;
       case 'about':
-        return <AboutPage />;
+        return <AboutPage onNavigate={setCurrentPage} />;
       case 'risks':
         return <RiskManagementPage />;
       case 'training':
-        return <TrainingPage />;
+        return <TrainingPage onNavigate={setCurrentPage} />;
       case 'checklist':
-        return <ChecklistPage />;
+        return <ChecklistPage onNavigate={setCurrentPage} />;
       case 'blog':
         return <BlogPage />;
       case 'contact':
         return <ContactPage />;
+      case 'nr1-1-1':
+      case 'nr1-1-2':
+      case 'nr1-1-3':
+      case 'nr1-1-4':
+      case 'nr1-1-5':
+      case 'nr1-1-6':
+        return <NR1SectionPage sectionId={currentPage} onNavigate={setCurrentPage} />;
       default:
         return <HomePage onNavigate={setCurrentPage} />;
     }

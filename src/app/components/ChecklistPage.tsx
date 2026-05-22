@@ -1,6 +1,11 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { CheckSquare, Square, Download, Share2, RotateCcw } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
+
+interface ChecklistPageProps {
+  onNavigate: (page: string) => void;
+}
 
 interface ChecklistItem {
   id: number;
@@ -59,7 +64,14 @@ const initialChecklist: ChecklistItem[] = [
   },
 ];
 
-export default function ChecklistPage() {
+const categoryImages: Record<number, string> = {
+  1: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=80',
+  2: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1000&q=80',
+  3: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80',
+  4: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80',
+};
+
+export default function ChecklistPage({ onNavigate }: ChecklistPageProps) {
   const [checklist, setChecklist] = useState<ChecklistItem[]>(initialChecklist);
 
   const toggleItem = (categoryId: number, itemId: number) => {
@@ -93,6 +105,38 @@ export default function ChecklistPage() {
   );
   const progress = Math.round((checkedItems / totalItems) * 100);
 
+  const exportChecklist = () => {
+    const content = checklist
+      .map((category) => {
+        const items = category.items
+          .map((item) => `${item.checked ? '[x]' : '[ ]'} ${item.text}`)
+          .join('\n');
+        return `${category.category}\n${items}`;
+      })
+      .join('\n\n');
+    const blob = new Blob([`Checklist NR-1\nProgresso: ${progress}%\n\n${content}`], {
+      type: 'text/plain;charset=utf-8',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'checklist-nr1.txt';
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const shareChecklist = async () => {
+    const text = `Checklist NR-1: ${checkedItems} de ${totalItems} itens concluidos (${progress}%).`;
+
+    if (navigator.share) {
+      await navigator.share({ title: 'Checklist NR-1', text, url: window.location.href });
+      return;
+    }
+
+    await navigator.clipboard.writeText(`${text} ${window.location.href}`);
+    onNavigate('contact');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,6 +153,12 @@ export default function ChecklistPage() {
             Verifique o cumprimento dos requisitos essenciais
           </p>
         </motion.div>
+
+        <ImageWithFallback
+          src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80"
+          alt="Documentos de conformidade e planejamento"
+          className="h-64 w-full object-cover rounded-xl shadow-xl mb-8"
+        />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -146,11 +196,17 @@ export default function ChecklistPage() {
           </div>
 
           <div className="flex gap-3">
-            <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2">
+            <button
+              onClick={exportChecklist}
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+            >
               <Download className="w-4 h-4" />
-              Exportar PDF
+              Exportar Relatorio
             </button>
-            <button className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2">
+            <button
+              onClick={shareChecklist}
+              className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+            >
               <Share2 className="w-4 h-4" />
               Compartilhar
             </button>
@@ -173,12 +229,20 @@ export default function ChecklistPage() {
               transition={{ delay: 0.3 + catIndex * 0.1, duration: 0.6 }}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
             >
-              <div className="bg-blue-600 dark:bg-blue-700 px-6 py-4">
-                <h3 className="text-xl font-bold text-white">{category.category}</h3>
-                <p className="text-blue-100 text-sm">
-                  {category.items.filter((item) => item.checked).length} de {category.items.length}{' '}
-                  completos
-                </p>
+              <div className="relative h-44">
+                <ImageWithFallback
+                  src={categoryImages[category.id]}
+                  alt={category.category}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-purple-950/65"></div>
+                <div className="absolute inset-0 px-6 py-5 flex flex-col justify-end">
+                  <h3 className="text-xl font-bold text-white">{category.category}</h3>
+                  <p className="text-purple-100 text-sm">
+                    {category.items.filter((item) => item.checked).length} de {category.items.length}{' '}
+                    completos
+                  </p>
+                </div>
               </div>
 
               <div className="p-6 space-y-3">

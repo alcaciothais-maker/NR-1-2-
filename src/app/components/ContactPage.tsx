@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -208,8 +209,14 @@ export default function ContactPage() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-950 rounded-xl shadow-xl p-8 text-white"
+            className="bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-950 rounded-xl shadow-xl overflow-hidden text-white"
           >
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1000&q=80"
+              alt="Especialista em seguranca do trabalho atendendo cliente"
+              className="h-56 w-full object-cover"
+            />
+            <div className="p-8">
             <h2 className="text-2xl font-bold mb-6">Por que nos escolher?</h2>
 
             <div className="space-y-6">
@@ -259,6 +266,7 @@ export default function ContactPage() {
               <p className="text-blue-100 text-sm">Sábado: 8h às 12h</p>
               <p className="text-blue-100 text-sm">Emergências: 24/7</p>
             </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>

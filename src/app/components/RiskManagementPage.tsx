@@ -2,13 +2,15 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { TrendingDown, AlertTriangle, CheckCircle, XCircle, X, FileText } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 
 const riskData = [
-  { month: 'Jan', alto: 12, medio: 24, baixo: 45 },
-  { month: 'Fev', alto: 10, medio: 22, baixo: 48 },
-  { month: 'Mar', alto: 8, medio: 20, baixo: 52 },
-  { month: 'Abr', alto: 6, medio: 18, baixo: 55 },
-  { month: 'Mai', alto: 5, medio: 15, baixo: 58 },
+  { month: 'Jan', alto: 12, medio: 24, baixo: 45, controlados: 52 },
+  { month: 'Fev', alto: 10, medio: 22, baixo: 48, controlados: 61 },
+  { month: 'Mar', alto: 8, medio: 20, baixo: 52, controlados: 69 },
+  { month: 'Abr', alto: 6, medio: 18, baixo: 55, controlados: 76 },
+  { month: 'Mai', alto: 5, medio: 15, baixo: 58, controlados: 84 },
+  { month: 'Jun', alto: 4, medio: 13, baixo: 62, controlados: 91 },
 ];
 
 const incidentData = [
@@ -26,10 +28,60 @@ const complianceData = [
 ];
 
 const riskCategories = [
-  { title: 'Riscos Críticos', count: 5, trend: -2, color: 'bg-red-500', icon: XCircle, id: 'critical' },
-  { title: 'Riscos Altos', count: 15, trend: -3, color: 'bg-orange-500', icon: AlertTriangle, id: 'high' },
-  { title: 'Riscos Médios', count: 32, trend: -5, color: 'bg-yellow-500', icon: AlertTriangle, id: 'medium' },
-  { title: 'Riscos Baixos', count: 58, trend: 8, color: 'bg-green-500', icon: CheckCircle, id: 'low' },
+  {
+    title: 'Riscos Críticos',
+    count: 5,
+    trend: -2,
+    color: 'bg-red-500',
+    icon: XCircle,
+    id: 'critical',
+    image: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a7a8?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    title: 'Riscos Altos',
+    count: 15,
+    trend: -3,
+    color: 'bg-orange-500',
+    icon: AlertTriangle,
+    id: 'high',
+    image: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    title: 'Riscos Médios',
+    count: 32,
+    trend: -5,
+    color: 'bg-yellow-500',
+    icon: AlertTriangle,
+    id: 'medium',
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=700&q=80',
+  },
+  {
+    title: 'Riscos Baixos',
+    count: 58,
+    trend: 8,
+    color: 'bg-green-500',
+    icon: CheckCircle,
+    id: 'low',
+    image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=80',
+  },
+];
+
+const riskHighlights = [
+  {
+    title: 'Inspeção em campo',
+    description: 'Registro visual de perigos, controles e evidencias no ambiente operacional.',
+    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    title: 'Uso de EPIs',
+    description: 'Acompanhamento de aderencia aos equipamentos de protecao individual.',
+    image: 'https://images.unsplash.com/photo-1581093458791-9d15482442f6?auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    title: 'Plano de controle',
+    description: 'Priorizacao de acoes corretivas por criticidade e impacto operacional.',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
+  },
 ];
 
 export default function RiskManagementPage() {
@@ -154,6 +206,34 @@ export default function RiskManagementPage() {
           </p>
         </motion.div>
 
+        <ImageWithFallback
+          src="https://images.unsplash.com/photo-1581091215367-59ab6b56f524?auto=format&fit=crop&w=1600&q=80"
+          alt="Inspecao de seguranca em ambiente industrial"
+          className="h-72 w-full object-cover rounded-xl shadow-xl mb-12"
+        />
+
+        <div className="grid lg:grid-cols-3 gap-6 mb-12">
+          {riskHighlights.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
+            >
+              <ImageWithFallback
+                src={item.image}
+                alt={item.title}
+                className="h-44 w-full object-cover"
+              />
+              <div className="p-5">
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {riskCategories.map((category, index) => {
             const Icon = category.icon;
@@ -165,8 +245,18 @@ export default function RiskManagementPage() {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 onClick={() => setSelectedRisk(category.id)}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all cursor-pointer"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer group"
               >
+                <div className="relative h-32 overflow-hidden">
+                  <ImageWithFallback
+                    src={category.image}
+                    alt={`Imagem de ${category.title}`}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/30"></div>
+                  <div className={`${category.color} absolute bottom-0 left-0 right-0 h-1.5`}></div>
+                </div>
+                <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className={`${category.color} w-12 h-12 rounded-lg flex items-center justify-center`}>
                     <Icon className="w-6 h-6 text-white" />
@@ -180,6 +270,7 @@ export default function RiskManagementPage() {
                   {category.count}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">{category.title}</p>
+                </div>
               </motion.div>
             );
           })}
@@ -192,14 +283,41 @@ export default function RiskManagementPage() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6"
           >
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1581091215367-59ab6b56f524?auto=format&fit=crop&w=1000&q=80"
+              alt="Monitoramento de riscos em campo"
+              className="h-40 w-full object-cover rounded-lg mb-5"
+            />
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Evolução de Riscos (6 meses)
             </h2>
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              {[
+                { label: 'Alto risco', value: '4', color: 'text-red-600' },
+                { label: 'Médio risco', value: '13', color: 'text-amber-600' },
+                { label: 'Controlados', value: '91%', color: 'text-emerald-600' },
+              ].map((metric) => (
+                <div key={metric.label} className="rounded-lg bg-gray-50 dark:bg-gray-700 p-3">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{metric.label}</p>
+                  <p className={`text-2xl font-bold ${metric.color}`}>{metric.value}</p>
+                </div>
+              ))}
+            </div>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={riskData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                <defs>
+                  <linearGradient id="riskRed" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#f97316" />
+                    <stop offset="100%" stopColor="#ef4444" />
+                  </linearGradient>
+                  <linearGradient id="riskGreen" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#22c55e" />
+                    <stop offset="100%" stopColor="#14b8a6" />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
                 <XAxis dataKey="month" stroke="#9ca3af" />
-                <YAxis stroke="#9ca3af" />
+                <YAxis stroke="#9ca3af" domain={[0, 100]} />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: '#1f2937',
@@ -209,9 +327,9 @@ export default function RiskManagementPage() {
                   }}
                 />
                 <Legend />
-                <Line type="monotone" dataKey="alto" stroke="#ef4444" strokeWidth={2} name="Alto Risco" />
-                <Line type="monotone" dataKey="medio" stroke="#f59e0b" strokeWidth={2} name="Médio Risco" />
-                <Line type="monotone" dataKey="baixo" stroke="#10b981" strokeWidth={2} name="Baixo Risco" />
+                <Line type="monotone" dataKey="alto" stroke="url(#riskRed)" strokeWidth={4} name="Alto Risco" dot={{ r: 4 }} activeDot={{ r: 7 }} />
+                <Line type="monotone" dataKey="medio" stroke="#f59e0b" strokeWidth={3} name="Médio Risco" dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="controlados" stroke="url(#riskGreen)" strokeWidth={4} name="Riscos Controlados (%)" dot={{ r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           </motion.div>
@@ -222,6 +340,11 @@ export default function RiskManagementPage() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6"
           >
+            <ImageWithFallback
+              src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80"
+              alt="Analise de incidentes e controles de seguranca"
+              className="h-40 w-full object-cover rounded-lg mb-5"
+            />
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Status de Incidentes
             </h2>
@@ -231,9 +354,11 @@ export default function RiskManagementPage() {
                   data={incidentData}
                   cx="50%"
                   cy="50%"
+                  innerRadius={58}
                   labelLine={false}
                   label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={100}
+                  outerRadius={108}
+                  paddingAngle={4}
                   fill="#8884d8"
                   dataKey="value"
                 >
@@ -260,12 +385,17 @@ export default function RiskManagementPage() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6"
         >
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80"
+            alt="Indicadores de conformidade e plano de acao"
+            className="h-44 w-full object-cover rounded-lg mb-5"
+          />
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
             Conformidade por Categoria
           </h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={complianceData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
               <XAxis dataKey="category" stroke="#9ca3af" />
               <YAxis stroke="#9ca3af" />
               <Tooltip
@@ -276,7 +406,14 @@ export default function RiskManagementPage() {
                   color: '#fff',
                 }}
               />
-              <Bar dataKey="compliance" fill="#3b82f6" radius={[8, 8, 0, 0]} name="% Conformidade" />
+              <Bar dataKey="compliance" radius={[8, 8, 0, 0]} name="% Conformidade">
+                {complianceData.map((entry) => (
+                  <Cell
+                    key={entry.category}
+                    fill={entry.compliance >= 90 ? '#10b981' : entry.compliance >= 88 ? '#3b82f6' : '#f59e0b'}
+                  />
+                ))}
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </motion.div>
