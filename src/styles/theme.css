@@ -166,6 +166,151 @@
 }
 
 
+/* Universal legibility rule: light backgrounds use black text; dark backgrounds use white text. */
+:is(
+  .bg-white,
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-gray-200,
+  .bg-blue-50,
+  .bg-blue-100,
+  .bg-purple-50,
+  .bg-green-50,
+  .bg-yellow-50,
+  .bg-yellow-100,
+  .bg-orange-50,
+  .hover\:bg-blue-50:hover,
+  .hover\:bg-purple-50:hover,
+  .hover\:bg-gray-100:hover
+),
+:is(
+  .bg-white,
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-gray-200,
+  .bg-blue-50,
+  .bg-blue-100,
+  .bg-purple-50,
+  .bg-green-50,
+  .bg-yellow-50,
+  .bg-yellow-100,
+  .bg-orange-50,
+  .hover\:bg-blue-50:hover,
+  .hover\:bg-purple-50:hover,
+  .hover\:bg-gray-100:hover
+) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em, div) {
+  color: #000000 !important;
+}
+
+:is(
+  .bg-blue-500,
+  .bg-blue-600,
+  .bg-blue-700,
+  .bg-blue-800,
+  .bg-blue-900,
+  .bg-blue-950\/70,
+  .bg-purple-500,
+  .bg-purple-600,
+  .bg-purple-700,
+  .bg-purple-800,
+  .bg-purple-950\/45,
+  .bg-purple-950\/65,
+  .bg-indigo-500,
+  .bg-indigo-600,
+  .bg-indigo-700,
+  .bg-green-500,
+  .bg-green-600,
+  .bg-red-500,
+  .bg-red-600,
+  .bg-orange-500,
+  .bg-gray-600,
+  .bg-gray-700,
+  .bg-gray-800,
+  .bg-gray-900,
+  .from-blue-600,
+  .from-blue-700,
+  .from-blue-800,
+  .from-purple-600,
+  .from-purple-800,
+  .to-blue-700,
+  .to-blue-800,
+  .to-blue-900,
+  .to-blue-950,
+  .to-purple-800,
+  .hover\:bg-blue-600:hover,
+  .hover\:bg-blue-700:hover,
+  .hover\:bg-gray-700:hover
+),
+:is(
+  .bg-blue-500,
+  .bg-blue-600,
+  .bg-blue-700,
+  .bg-blue-800,
+  .bg-blue-900,
+  .bg-blue-950\/70,
+  .bg-purple-500,
+  .bg-purple-600,
+  .bg-purple-700,
+  .bg-purple-800,
+  .bg-purple-950\/45,
+  .bg-purple-950\/65,
+  .bg-indigo-500,
+  .bg-indigo-600,
+  .bg-indigo-700,
+  .bg-green-500,
+  .bg-green-600,
+  .bg-red-500,
+  .bg-red-600,
+  .bg-orange-500,
+  .bg-gray-600,
+  .bg-gray-700,
+  .bg-gray-800,
+  .bg-gray-900,
+  .from-blue-600,
+  .from-blue-700,
+  .from-blue-800,
+  .from-purple-600,
+  .from-purple-800,
+  .to-blue-700,
+  .to-blue-800,
+  .to-blue-900,
+  .to-blue-950,
+  .to-purple-800,
+  .hover\:bg-blue-600:hover,
+  .hover\:bg-blue-700:hover,
+  .hover\:bg-gray-700:hover
+) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em, div) {
+  color: #ffffff !important;
+}
+
+.dark :is(
+  .dark\:bg-gray-700,
+  .dark\:bg-gray-800,
+  .dark\:bg-gray-900,
+  .dark\:bg-blue-900,
+  .dark\:bg-blue-950\/30,
+  .dark\:bg-purple-950\/30,
+  .dark\:from-blue-800,
+  .dark\:from-purple-800,
+  .dark\:to-blue-950,
+  .dark\:to-purple-950
+),
+.dark :is(
+  .dark\:bg-gray-700,
+  .dark\:bg-gray-800,
+  .dark\:bg-gray-900,
+  .dark\:bg-blue-900,
+  .dark\:bg-blue-950\/30,
+  .dark\:bg-purple-950\/30,
+  .dark\:from-blue-800,
+  .dark\:from-purple-800,
+  .dark\:to-blue-950,
+  .dark\:to-purple-950
+) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em, div) {
+  color: #ffffff !important;
+}
+
+
 .high-contrast {
   --background: #000000;
   --foreground: #ffffff;
