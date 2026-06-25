@@ -75,7 +75,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       >
         <ImageWithFallback
           src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1800&q=80"
-          alt="Equipe com equipamentos de seguranca em ambiente industrial"
+          alt="Equipe com equipamentos de segurança em ambiente industrial"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-blue-950/70"></div>
@@ -145,21 +145,21 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid lg:grid-cols-2 gap-10 items-center">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80"
-            alt="Profissionais analisando dados de seguranca no trabalho"
+            alt="Profissionais analisando dados de segurança no trabalho"
             className="h-80 w-full object-cover rounded-xl shadow-xl"
           />
           <div>
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Gestao de SST com visao pratica
+              Gestão de SST com visão prática
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-              Centralize treinamentos, riscos, documentos e acompanhamento de conformidade em uma experiencia pensada para rotinas de seguranca do trabalho.
+              Centralize treinamentos, riscos, documentos e acompanhamento de conformidade em uma experiência pensada para rotinas de segurança do trabalho.
             </p>
             <button
               onClick={() => onNavigate('risks')}
               className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
             >
-              Ver Gestao de Riscos
+              Ver Gestão de Riscos
             </button>
           </div>
         </div>
@@ -184,7 +184,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1600&q=80"
-            alt="Equipe avaliando solucoes de seguranca ocupacional"
+            alt="Equipe avaliando soluções de segurança ocupacional"
             className="h-72 w-full object-cover rounded-xl shadow-xl mb-10"
           />
 

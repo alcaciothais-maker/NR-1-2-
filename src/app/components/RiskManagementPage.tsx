@@ -69,17 +69,17 @@ const riskCategories = [
 const riskHighlights = [
   {
     title: 'Inspeção em campo',
-    description: 'Registro visual de perigos, controles e evidencias no ambiente operacional.',
+    description: 'Registro visual de perigos, controles e evidências no ambiente operacional.',
     image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80',
   },
   {
     title: 'Uso de EPIs',
-    description: 'Acompanhamento de aderencia aos equipamentos de protecao individual.',
+    description: 'Acompanhamento de aderência aos equipamentos de proteção individual.',
     image: 'https://images.unsplash.com/photo-1581093458791-9d15482442f6?auto=format&fit=crop&w=900&q=80',
   },
   {
     title: 'Plano de controle',
-    description: 'Priorizacao de acoes corretivas por criticidade e impacto operacional.',
+    description: 'Priorização de ações corretivas por criticidade e impacto operacional.',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
   },
 ];
@@ -208,7 +208,7 @@ export default function RiskManagementPage() {
 
         <ImageWithFallback
           src="https://images.unsplash.com/photo-1581091215367-59ab6b56f524?auto=format&fit=crop&w=1600&q=80"
-          alt="Inspecao de seguranca em ambiente industrial"
+          alt="Inspeção de segurança em ambiente industrial"
           className="h-72 w-full object-cover rounded-xl shadow-xl mb-12"
         />
 
@@ -342,7 +342,7 @@ export default function RiskManagementPage() {
           >
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80"
-              alt="Analise de incidentes e controles de seguranca"
+              alt="Análise de incidentes e controles de segurança"
               className="h-40 w-full object-cover rounded-lg mb-5"
             />
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
@@ -387,7 +387,7 @@ export default function RiskManagementPage() {
         >
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80"
-            alt="Indicadores de conformidade e plano de acao"
+            alt="Indicadores de conformidade e plano de ação"
             className="h-44 w-full object-cover rounded-lg mb-5"
           />
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">

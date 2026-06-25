@@ -19,63 +19,63 @@ const sections: Record<string, {
 }> = {
   'nr1-1-1': {
     number: '1.1',
-    title: 'Objeto e Campo de Aplicacao',
+    title: 'Objeto e Campo de Aplicação',
     subtitle: 'Entenda onde a NR-1 se aplica e por que ela orienta todas as demais Normas Regulamentadoras.',
     image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
     icon: Shield,
-    summary: 'Esta parte apresenta o alcance geral da NR-1, sua funcao dentro da gestao de Seguranca e Saude no Trabalho e a base para aplicacao das demais NRs nas empresas.',
-    topics: ['Campo de aplicacao das Normas Regulamentadoras', 'Relacao entre empregadores, trabalhadores e ambientes de trabalho', 'Diretrizes gerais para SST'],
+    summary: 'Esta parte apresenta o alcance geral da NR-1, sua função dentro da gestão de Segurança e Saúde no Trabalho e a base para aplicação das demais NRs nas empresas.',
+    topics: ['Campo de aplicação das Normas Regulamentadoras', 'Relação entre empregadores, trabalhadores e ambientes de trabalho', 'Diretrizes gerais para SST'],
     actions: ['Mapear unidades e atividades abrangidas', 'Identificar quais NRs complementares se aplicam', 'Registrar responsabilidades iniciais de SST'],
   },
   'nr1-1-2': {
     number: '1.2',
-    title: 'Termos e Definicoes',
-    subtitle: 'Conceitos essenciais para evitar interpretacoes divergentes na gestao de SST.',
+    title: 'Termos e Definições',
+    subtitle: 'Conceitos essenciais para evitar interpretações divergentes na gestão de SST.',
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80',
     icon: FileText,
-    summary: 'Reune as definicoes usadas na NR-1 e em processos de gestao ocupacional, ajudando equipes tecnicas e liderancas a falarem a mesma linguagem.',
-    topics: ['Definicoes comuns as NRs', 'Conceitos de perigo, risco e medidas de prevencao', 'Padronizacao documental'],
-    actions: ['Criar glossario interno de SST', 'Usar termos padronizados em relatorios', 'Treinar liderancas sobre conceitos-chave'],
+    summary: 'Reúne as definições usadas na NR-1 e em processos de gestão ocupacional, ajudando equipes técnicas e lideranças a falarem a mesma linguagem.',
+    topics: ['Definições comuns as NRs', 'Conceitos de perigo, risco e medidas de prevenção', 'Padronização documental'],
+    actions: ['Criar glossário interno de SST', 'Usar termos padronizados em relatórios', 'Treinar lideranças sobre conceitos-chave'],
   },
   'nr1-1-3': {
     number: '1.3',
     title: 'Direitos e Deveres',
-    subtitle: 'Responsabilidades de empregadores e trabalhadores na prevencao de acidentes e doencas ocupacionais.',
+    subtitle: 'Responsabilidades de empregadores e trabalhadores na prevenção de acidentes e doenças ocupacionais.',
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80',
     icon: Users,
-    summary: 'Define papeis esperados na rotina de SST, incluindo cumprimento de procedimentos, comunicacao de riscos, fornecimento de condicoes seguras e participacao dos trabalhadores.',
-    topics: ['Deveres do empregador', 'Deveres dos trabalhadores', 'Participacao e comunicacao de riscos'],
-    actions: ['Formalizar responsabilidades por area', 'Criar canal para reporte de riscos', 'Acompanhar adesao aos procedimentos'],
+    summary: 'Define papéis esperados na rotina de SST, incluindo cumprimento de procedimentos, comunicação de riscos, fornecimento de condições seguras e participação dos trabalhadores.',
+    topics: ['Deveres do empregador', 'Deveres dos trabalhadores', 'Participação e comunicação de riscos'],
+    actions: ['Formalizar responsabilidades por área', 'Criar canal para reporte de riscos', 'Acompanhar adesão aos procedimentos'],
   },
   'nr1-1-4': {
     number: '1.4',
-    title: 'Capacitacao em SST',
-    subtitle: 'Requisitos para treinamentos, orientacoes e desenvolvimento de competencias em seguranca.',
+    title: 'Capacitação em SST',
+    subtitle: 'Requisitos para treinamentos, orientações e desenvolvimento de competências em segurança.',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80',
     icon: GraduationCap,
-    summary: 'Trata da capacitacao dos trabalhadores, criterios de treinamento, reciclagens e registros necessarios para comprovar a preparacao das equipes.',
-    topics: ['Treinamento admissional e periodico', 'Conteudo compativel com os riscos da atividade', 'Registro e rastreabilidade das capacitacoes'],
-    actions: ['Montar matriz de treinamentos', 'Definir prazos de reciclagem', 'Guardar evidencias e certificados'],
+    summary: 'Trata da capacitação dos trabalhadores, critérios de treinamento, reciclagens e registros necessários para comprovar a preparação das equipes.',
+    topics: ['Treinamento admissional e periódico', 'Conteúdo compatível com os riscos da atividade', 'Registro e rastreabilidade das capacitações'],
+    actions: ['Montar matriz de treinamentos', 'Definir prazos de reciclagem', 'Guardar evidências e certificados'],
   },
   'nr1-1-5': {
     number: '1.5',
     title: 'Gerenciamento de Riscos Ocupacionais',
-    subtitle: 'Base do GRO e do PGR para identificar perigos, avaliar riscos e controlar exposicoes.',
+    subtitle: 'Base do GRO e do PGR para identificar perigos, avaliar riscos e controlar exposições.',
     image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=80',
     icon: AlertTriangle,
-    summary: 'Detalha a logica de gerenciamento de riscos ocupacionais, conectando inventario de riscos, plano de acao, medidas de controle e melhoria continua.',
-    topics: ['Inventario de riscos ocupacionais', 'Plano de acao do PGR', 'Hierarquia de medidas de prevencao'],
-    actions: ['Atualizar inventario de riscos', 'Priorizar controles por severidade', 'Monitorar eficacia das medidas implantadas'],
+    summary: 'Detalha a lógica de gerenciamento de riscos ocupacionais, conectando inventário de riscos, plano de ação, medidas de controle e melhoria contínua.',
+    topics: ['Inventário de riscos ocupacionais', 'Plano de ação do PGR', 'Hierarquia de medidas de prevenção'],
+    actions: ['Atualizar inventário de riscos', 'Priorizar controles por severidade', 'Monitorar eficácia das medidas implantadas'],
   },
   'nr1-1-6': {
     number: '1.6',
-    title: 'Disposicoes Finais',
-    subtitle: 'Orientacoes finais para documentacao, aplicacao e manutencao das exigencias da NR-1.',
+    title: 'Disposições Finais',
+    subtitle: 'Orientações finais para documentação, aplicação e manutenção das exigências da NR-1.',
     image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1400&q=80',
     icon: CheckCircle,
-    summary: 'Consolida pontos de aplicacao, registros e organizacao final para que a empresa mantenha conformidade de forma continua.',
-    topics: ['Organizacao de evidencias', 'Manutencao de registros', 'Revisao periodica de conformidade'],
-    actions: ['Revisar documentos obrigatorios', 'Conferir pendencias no checklist', 'Definir rotina de auditoria interna'],
+    summary: 'Consolida pontos de aplicação, registros e organização final para que a empresa mantenha conformidade de forma contínua.',
+    topics: ['Organização de evidências', 'Manutenção de registros', 'Revisão periódica de conformidade'],
+    actions: ['Revisar documentos obrigatórios', 'Conferir pendências no checklist', 'Definir rotina de auditoria interna'],
   },
 };
 
@@ -132,7 +132,7 @@ export default function NR1SectionPage({ sectionId, onNavigate }: NR1SectionPage
             </div>
 
             <aside className="rounded-xl bg-purple-700 p-6 text-white">
-              <h3 className="text-xl font-bold mb-4">Acoes recomendadas</h3>
+              <h3 className="text-xl font-bold mb-4">Ações recomendadas</h3>
               <div className="space-y-3">
                 {section.actions.map((action) => (
                   <div key={action} className="rounded-lg bg-white/10 p-3 text-purple-50">
