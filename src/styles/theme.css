@@ -3,11 +3,11 @@
 :root {
   --font-size: 16px;
   --background: #f8f5ff;
-  --foreground: #1f1235;
+  --foreground: #000000;
   --card: #ffffff;
-  --card-foreground: #1f1235;
+  --card-foreground: #000000;
   --popover: oklch(1 0 0);
-  --popover-foreground: #1f1235;
+  --popover-foreground: #000000;
   --primary: #6d28d9;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.95 0.0058 264.53);
@@ -43,11 +43,11 @@
 
 .dark {
   --background: #14091f;
-  --foreground: #f8f5ff;
+  --foreground: #ffffff;
   --card: #241133;
-  --card-foreground: #f8f5ff;
+  --card-foreground: #ffffff;
   --popover: #241133;
-  --popover-foreground: #f8f5ff;
+  --popover-foreground: #ffffff;
   --primary: #a855f7;
   --primary-foreground: #14091f;
   --secondary: oklch(0.269 0 0);
@@ -92,11 +92,18 @@
 .bg-purple-600 { background-color: #7c3aed !important; }
 .bg-purple-700 { background-color: #6d28d9 !important; }
 .bg-purple-800 { background-color: #581c87 !important; }
+.bg-yellow-100 { background-color: #fef3c7 !important; }
+.bg-yellow-200 { background-color: #fde68a !important; }
+.bg-yellow-300 { background-color: #fcd34d !important; }
+.bg-yellow-400 { background-color: #facc15 !important; }
+.bg-yellow-500 { background-color: #eab308 !important; }
 
 .hover\:bg-blue-50:hover { background-color: #fef9c3 !important; }
 .hover\:bg-blue-600:hover { background-color: #6d28d9 !important; }
 .hover\:bg-blue-700:hover { background-color: #581c87 !important; }
 .hover\:bg-purple-50:hover { background-color: #fef9c3 !important; }
+.hover\:bg-yellow-200:hover { background-color: #fde68a !important; }
+.hover\:bg-yellow-300:hover { background-color: #fcd34d !important; }
 
 .text-blue-100 { color: #ede9fe !important; }
 .text-blue-300 { color: #fde68a !important; }
@@ -167,147 +174,131 @@
 
 
 /* Universal legibility rule: light backgrounds use black text; dark backgrounds use white text. */
-:is(
-  .bg-white,
-  .bg-gray-50,
-  .bg-gray-100,
-  .bg-gray-200,
-  .bg-blue-50,
-  .bg-blue-100,
-  .bg-purple-50,
-  .bg-green-50,
-  .bg-yellow-50,
-  .bg-yellow-100,
-  .bg-orange-50,
-  .hover\:bg-blue-50:hover,
-  .hover\:bg-purple-50:hover,
-  .hover\:bg-gray-100:hover
-),
-:is(
-  .bg-white,
-  .bg-gray-50,
-  .bg-gray-100,
-  .bg-gray-200,
-  .bg-blue-50,
-  .bg-blue-100,
-  .bg-purple-50,
-  .bg-green-50,
-  .bg-yellow-50,
-  .bg-yellow-100,
-  .bg-orange-50,
-  .hover\:bg-blue-50:hover,
-  .hover\:bg-purple-50:hover,
-  .hover\:bg-gray-100:hover
-) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em, div) {
+body {
+  color: var(--foreground);
+}
+
+.bg-background,
+.bg-card,
+.bg-popover {
+  color: var(--foreground);
+}
+
+.bg-white,
+.bg-gray-50,
+.bg-gray-100,
+.bg-gray-200,
+.bg-blue-50,
+.bg-blue-100,
+.bg-purple-50,
+.bg-purple-100,
+.bg-green-50,
+.bg-green-100,
+.bg-yellow-50,
+.bg-yellow-100,
+.bg-yellow-200,
+.bg-yellow-300,
+.bg-yellow-400,
+.bg-yellow-500,
+.bg-orange-50,
+.bg-orange-100,
+.from-gray-50,
+.from-white,
+.to-white,
+.hover\:bg-blue-50:hover,
+.hover\:bg-purple-50:hover,
+.hover\:bg-gray-100:hover,
+.hover\:bg-yellow-200:hover,
+.hover\:bg-yellow-300:hover {
   color: #000000 !important;
 }
 
-:is(
-  .bg-blue-500,
-  .bg-blue-600,
-  .bg-blue-700,
-  .bg-blue-800,
-  .bg-blue-900,
-  .bg-blue-950\/70,
-  .bg-purple-500,
-  .bg-purple-600,
-  .bg-purple-700,
-  .bg-purple-800,
-  .bg-purple-950\/45,
-  .bg-purple-950\/65,
-  .bg-indigo-500,
-  .bg-indigo-600,
-  .bg-indigo-700,
-  .bg-green-500,
-  .bg-green-600,
-  .bg-red-500,
-  .bg-red-600,
-  .bg-orange-500,
-  .bg-gray-600,
-  .bg-gray-700,
-  .bg-gray-800,
-  .bg-gray-900,
-  .from-blue-600,
-  .from-blue-700,
-  .from-blue-800,
-  .from-purple-600,
-  .from-purple-800,
-  .to-blue-700,
-  .to-blue-800,
-  .to-blue-900,
-  .to-blue-950,
-  .to-purple-800,
-  .hover\:bg-blue-600:hover,
-  .hover\:bg-blue-700:hover,
-  .hover\:bg-gray-700:hover
-),
-:is(
-  .bg-blue-500,
-  .bg-blue-600,
-  .bg-blue-700,
-  .bg-blue-800,
-  .bg-blue-900,
-  .bg-blue-950\/70,
-  .bg-purple-500,
-  .bg-purple-600,
-  .bg-purple-700,
-  .bg-purple-800,
-  .bg-purple-950\/45,
-  .bg-purple-950\/65,
-  .bg-indigo-500,
-  .bg-indigo-600,
-  .bg-indigo-700,
-  .bg-green-500,
-  .bg-green-600,
-  .bg-red-500,
-  .bg-red-600,
-  .bg-orange-500,
-  .bg-gray-600,
-  .bg-gray-700,
-  .bg-gray-800,
-  .bg-gray-900,
-  .from-blue-600,
-  .from-blue-700,
-  .from-blue-800,
-  .from-purple-600,
-  .from-purple-800,
-  .to-blue-700,
-  .to-blue-800,
-  .to-blue-900,
-  .to-blue-950,
-  .to-purple-800,
-  .hover\:bg-blue-600:hover,
-  .hover\:bg-blue-700:hover,
-  .hover\:bg-gray-700:hover
-) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em, div) {
+.bg-white :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-gray-50 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-gray-100 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-gray-200 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-blue-50 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-blue-100 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-purple-50 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-purple-100 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-green-50 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-green-100 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-yellow-50 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-yellow-100 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-yellow-200 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-yellow-300 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-yellow-400 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-yellow-500 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-orange-50 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em),
+.bg-orange-100 :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em) {
+  color: #000000 !important;
+}
+
+.bg-blue-500,
+.bg-blue-600,
+.bg-blue-700,
+.bg-blue-800,
+.bg-blue-900,
+.bg-blue-950,
+.bg-blue-950\/70,
+.bg-purple-500,
+.bg-purple-600,
+.bg-purple-700,
+.bg-purple-800,
+.bg-purple-900,
+.bg-purple-950,
+.bg-purple-950\/35,
+.bg-purple-950\/45,
+.bg-purple-950\/65,
+.bg-indigo-500,
+.bg-indigo-600,
+.bg-indigo-700,
+.bg-green-500,
+.bg-green-600,
+.bg-green-700,
+.bg-red-500,
+.bg-red-600,
+.bg-red-700,
+.bg-orange-500,
+.bg-orange-600,
+.bg-gray-600,
+.bg-gray-700,
+.bg-gray-800,
+.bg-gray-900,
+.bg-black,
+.bg-black\/20,
+.bg-black\/30,
+.bg-black\/50,
+.from-blue-600,
+.from-blue-700,
+.from-blue-800,
+.from-purple-600,
+.from-purple-800,
+.from-gray-900,
+.to-blue-700,
+.to-blue-800,
+.to-blue-900,
+.to-blue-950,
+.to-purple-800,
+.to-gray-800,
+.hover\:bg-blue-600:hover,
+.hover\:bg-blue-700:hover,
+.hover\:bg-gray-700:hover {
   color: #ffffff !important;
 }
 
-.dark :is(
-  .dark\:bg-gray-700,
-  .dark\:bg-gray-800,
-  .dark\:bg-gray-900,
-  .dark\:bg-blue-900,
-  .dark\:bg-blue-950\/30,
-  .dark\:bg-purple-950\/30,
-  .dark\:from-blue-800,
-  .dark\:from-purple-800,
-  .dark\:to-blue-950,
-  .dark\:to-purple-950
-),
-.dark :is(
-  .dark\:bg-gray-700,
-  .dark\:bg-gray-800,
-  .dark\:bg-gray-900,
-  .dark\:bg-blue-900,
-  .dark\:bg-blue-950\/30,
-  .dark\:bg-purple-950\/30,
-  .dark\:from-blue-800,
-  .dark\:from-purple-800,
-  .dark\:to-blue-950,
-  .dark\:to-purple-950
-) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em, div) {
+:is(.bg-blue-500, .bg-blue-600, .bg-blue-700, .bg-blue-800, .bg-blue-900, .bg-blue-950, .bg-blue-950\/70, .bg-purple-500, .bg-purple-600, .bg-purple-700, .bg-purple-800, .bg-purple-900, .bg-purple-950, .bg-purple-950\/35, .bg-purple-950\/45, .bg-purple-950\/65, .bg-indigo-500, .bg-indigo-600, .bg-indigo-700, .bg-green-500, .bg-green-600, .bg-green-700, .bg-red-500, .bg-red-600, .bg-red-700, .bg-orange-500, .bg-orange-600, .bg-gray-600, .bg-gray-700, .bg-gray-800, .bg-gray-900, .bg-black, .from-blue-600, .from-blue-700, .from-blue-800, .from-purple-600, .from-purple-800, .from-gray-900, .to-blue-700, .to-blue-800, .to-blue-900, .to-blue-950, .to-purple-800, .to-gray-800) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em) {
   color: #ffffff !important;
+}
+
+.dark :is(.dark\:bg-gray-700, .dark\:bg-gray-800, .dark\:bg-gray-900, .dark\:bg-blue-900, .dark\:bg-blue-950\/30, .dark\:bg-purple-950\/30, .dark\:from-blue-800, .dark\:from-purple-800, .dark\:from-gray-900, .dark\:to-blue-950, .dark\:to-purple-950, .dark\:to-gray-800),
+.dark :is(.dark\:bg-gray-700, .dark\:bg-gray-800, .dark\:bg-gray-900, .dark\:bg-blue-900, .dark\:bg-blue-950\/30, .dark\:bg-purple-950\/30, .dark\:from-blue-800, .dark\:from-purple-800, .dark\:from-gray-900, .dark\:to-blue-950, .dark\:to-purple-950, .dark\:to-gray-800) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em) {
+  color: #ffffff !important;
+}
+
+.dark :is(.dark\:bg-yellow-400, .dark\:bg-yellow-500),
+.dark :is(.dark\:bg-yellow-400, .dark\:bg-yellow-500) :where(h1, h2, h3, h4, h5, h6, p, span, label, li, a, button, input, textarea, select, small, strong, em) {
+  color: #000000 !important;
 }
 
 
