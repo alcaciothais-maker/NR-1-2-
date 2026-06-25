@@ -2,20 +2,20 @@
 
 :root {
   --font-size: 16px;
-  --background: #fbf7ff;
-  --foreground: oklch(0.145 0 0);
+  --background: #f8f5ff;
+  --foreground: #1f1235;
   --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: #1f1235;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover-foreground: #1f1235;
   --primary: #6d28d9;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.95 0.0058 264.53);
   --secondary-foreground: #030213;
   --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
+  --muted-foreground: #5b4b78;
+  --accent: #f3e8ff;
+  --accent-foreground: #2e1065;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
   --border: rgba(0, 0, 0, 0.1);
@@ -43,19 +43,19 @@
 
 .dark {
   --background: #14091f;
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --foreground: #f8f5ff;
+  --card: #241133;
+  --card-foreground: #f8f5ff;
+  --popover: #241133;
+  --popover-foreground: #f8f5ff;
   --primary: #a855f7;
-  --primary-foreground: oklch(0.205 0 0);
+  --primary-foreground: #14091f;
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --muted: #2e1a42;
+  --muted-foreground: #ddd6fe;
+  --accent: #3b1b59;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.269 0 0);
@@ -127,9 +127,44 @@
 .to-blue-900 { --tw-gradient-to: #3b0764 var(--tw-gradient-to-position) !important; }
 .to-blue-950 { --tw-gradient-to: #2e1065 var(--tw-gradient-to-position) !important; }
 
-.bg-gray-50 { background-color: #fbf7ff !important; }
+.bg-gray-50 { background-color: #f8f5ff !important; }
 .dark .dark\:bg-gray-900 { background-color: #14091f !important; }
 .dark .dark\:bg-gray-800 { background-color: #241133 !important; }
+.dark .dark\:bg-gray-700 { background-color: #332047 !important; }
+
+/* Contrast consistency: light surfaces keep dark text, dark surfaces keep light text. */
+.bg-white:not([class*="text-"]),
+.bg-gray-50:not([class*="text-"]),
+.bg-gray-100:not([class*="text-"]),
+.bg-purple-50:not([class*="text-"]) {
+  color: #1f1235;
+}
+
+.bg-blue-600,
+.bg-blue-700,
+.bg-blue-800,
+.bg-purple-600,
+.bg-purple-700,
+.bg-purple-800,
+.bg-gray-600,
+.bg-gray-700,
+.bg-red-600,
+.bg-green-600,
+.from-blue-600,
+.from-blue-700,
+.from-blue-800,
+.from-purple-600,
+.from-purple-800 {
+  color: #ffffff;
+}
+
+.dark .dark\:bg-gray-700:not([class*="text-"]),
+.dark .dark\:bg-gray-800:not([class*="text-"]),
+.dark .dark\:bg-gray-900:not([class*="text-"]),
+.dark .dark\:bg-purple-950\/30:not([class*="text-"]) {
+  color: #f8f5ff;
+}
+
 
 .high-contrast {
   --background: #000000;
@@ -326,17 +361,6 @@
   }
 }
 
-.high-contrast {
-  --background: #000000;
-  --foreground: #ffffff;
-  --border: #ffffff;
-}
-
-.high-contrast.dark {
-  --background: #ffffff;
-  --foreground: #000000;
-  --border: #000000;
-}
 
 @media (prefers-reduced-motion: reduce) {
   * {
