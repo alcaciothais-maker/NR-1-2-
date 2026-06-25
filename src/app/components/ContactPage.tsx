@@ -213,7 +213,7 @@ export default function ContactPage() {
           >
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1000&q=80"
-              alt="Especialista em seguranca do trabalho atendendo cliente"
+              alt="Especialista em segurança do trabalho atendendo cliente"
               className="h-56 w-full object-cover"
             />
             <div className="p-8">
